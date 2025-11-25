@@ -2,71 +2,71 @@
 
 ## 1. 基础设施搭建
 
-- [ ] 1.1 在 `Cargo.toml` 中添加 `rust-i18n` 依赖
-- [ ] 1.2 创建翻译文件目录结构 `locales/en/` 和 `locales/zh-CN/`
-- [ ] 1.3 创建 `src/i18n.rs` 模块文件
-- [ ] 1.4 在 `src/lib.rs` 中添加 `pub mod i18n;` 声明
-- [ ] 1.5 配置 `rust-i18n` 初始化宏(在 `src/i18n.rs` 中)
+- [x] 1.1 在 `Cargo.toml` 中添加 `rust-i18n` 依赖
+- [x] 1.2 创建翻译文件目录结构 `locales/en/` 和 `locales/zh-CN/`
+- [x] 1.3 创建 `src/i18n.rs` 模块文件
+- [x] 1.4 在 `src/lib.rs` 中添加 `pub mod i18n;` 声明
+- [x] 1.5 配置 `rust-i18n` 初始化宏(在 `src/i18n.rs` 中)
 
 ## 2. 语言检测与切换
 
-- [ ] 2.1 在 `src/args.rs` 的 `AppConfig` 中添加 `lang: Option<String>` 字段
-- [ ] 2.2 在 `src/args.rs` 中添加 `--lang` / `-L` 命令行参数定义
-- [ ] 2.3 实现 `src/i18n.rs::detect_language()` 函数(检测顺序:CLI参数 → GENACT_LANG → LANG → 默认en)
-- [ ] 2.4 实现 `src/i18n.rs::init()` 函数,在程序启动时调用
-- [ ] 2.5 在 `src/main.rs` 和 WASM 入口中调用 `i18n::init()`
+- [x] 2.1 在 `src/args.rs` 的 `AppConfig` 中添加 `lang: Option<String>` 字段
+- [x] 2.2 在 `src/args.rs` 中添加 `--lang` / `-L` 命令行参数定义
+- [x] 2.3 实现 `src/i18n.rs::detect_language()` 函数(检测顺序:CLI参数 → GENACT_LANG → LANG → 默认en)
+- [x] 2.4 实现 `src/i18n.rs::init()` 函数,在程序启动时调用
+- [x] 2.5 在 `src/main.rs` 和 WASM 入口中调用 `i18n::init()`
 
 ## 3. CLI 帮助信息翻译
 
-- [ ] 3.1 创建 `locales/en/cli.yml` - 英文翻译(作为基准)
-- [ ] 3.2 创建 `locales/zh-CN/cli.yml` - 中文翻译
-- [ ] 3.3 翻译应用描述(about)
-- [ ] 3.4 翻译所有命令行参数的 `help` 文本
-  - [ ] `--list-modules`
-  - [ ] `--modules`
-  - [ ] `--speed-factor`
-  - [ ] `--instant-print-lines`
-  - [ ] `--exit-after-time`
-  - [ ] `--exit-after-modules`
-  - [ ] `--print-completions`
-  - [ ] `--print-manpage`
-  - [ ] `--lang` (新增)
-- [ ] 3.5 修改 `src/args.rs` 中所有 `#[clap()]` 属性使用 `t!()` 宏
+- [x] 3.1 创建 `locales/en/cli.yml` - 英文翻译(作为基准)
+- [x] 3.2 创建 `locales/zh-CN/cli.yml` - 中文翻译
+- [x] 3.3 翻译应用描述(about)
+- [x] 3.4 翻译所有命令行参数的 `help` 文本
+  - [x] `--list-modules`
+  - [x] `--modules`
+  - [x] `--speed-factor`
+  - [x] `--instant-print-lines`
+  - [x] `--exit-after-time`
+  - [x] `--exit-after-modules`
+  - [x] `--print-completions`
+  - [x] `--print-manpage`
+  - [x] `--lang` (新增)
+- [x] 3.5 修改 `src/args.rs` 中所有 `#[clap()]` 属性使用 `t!()` 宏
 
 ## 4. 错误和提示消息翻译
 
-- [ ] 4.1 创建 `locales/en/messages.yml` 和 `locales/zh-CN/messages.yml`
-- [ ] 4.2 翻译 `src/args.rs` 中的错误消息
-  - [ ] "Speed factor must be larger than 0.01"
-  - [ ] "Must be larger than 0"
-- [ ] 4.3 翻译 `src/main.rs` 中的提示消息
-  - [ ] "Available modules:"
-- [ ] 4.4 翻译 `src/lib.rs` 中的退出消息
-  - [ ] "Saving work to disk..."
-- [ ] 4.5 修改相关代码使用 `t!()` 宏
+- [x] 4.1 创建 `locales/en/messages.yml` 和 `locales/zh-CN/messages.yml`
+- [x] 4.2 翻译 `src/args.rs` 中的错误消息
+  - [x] "Speed factor must be larger than 0.01"
+  - [x] "Must be larger than 0"
+- [x] 4.3 翻译 `src/main.rs` 中的提示消息
+  - [x] "Available modules:"
+- [x] 4.4 翻译 `src/lib.rs` 中的退出消息
+  - [x] "Saving work to disk..."
+- [x] 4.5 修改相关代码使用 `t!()` 宏
 
 ## 5. 模块输出翻译(可选 - Phase 2)
 
-- [ ] 5.1 创建 `locales/en/modules.yml` 和 `locales/zh-CN/modules.yml`
-- [ ] 5.2 提取并翻译通用状态词
-  - [ ] "Downloading"
-  - [ ] "Compiling"
-  - [ ] "Finished"
-  - [ ] "Building"
-  - [ ] "Removing"
-  - [ ] 其他模块特定术语
-- [ ] 5.3 修改 `src/modules/cargo.rs` 使用翻译宏
-- [ ] 5.4 修改 `src/modules/composer.rs` 使用翻译宏
-- [ ] 5.5 修改 `src/modules/docker_build.rs` 使用翻译宏
-- [ ] 5.6 修改 `src/modules/docker_image_rm.rs` 使用翻译宏
-- [ ] 5.7 修改其他需要翻译的模块(按需评估)
+- [x] 5.1 创建 `locales/en/modules.yml` 和 `locales/zh-CN/modules.yml`
+- [x] 5.2 提取并翻译通用状态词
+  - [x] "Downloading"
+  - [x] "Compiling"
+  - [x] "Finished"
+  - [x] "Building"
+  - [x] "Removing"
+  - [x] 其他模块特定术语
+- [x] 5.3 修改 `src/modules/cargo.rs` 使用翻译宏
+- [x] 5.4 修改 `src/modules/composer.rs` 使用翻译宏
+- [x] 5.5 修改 `src/modules/docker_build.rs` 使用翻译宏
+- [x] 5.6 修改 `src/modules/docker_image_rm.rs` 使用翻译宏
+- [x] 5.7 修改其他需要翻译的模块(按需评估)
 
 ## 6. WASM 支持(可选 - Phase 3)
 
-- [ ] 6.1 验证 `rust-i18n` 在 WASM 环境下编译通过
-- [ ] 6.2 实现 WASM 环境的语言检测(浏览器语言 API)
-- [ ] 6.3 添加 URL 参数解析支持 `?lang=zh-CN`
-- [ ] 6.4 在 `index.html` 中添加语言切换说明或 UI
+- [x] 6.1 验证 `rust-i18n` 在 WASM 环境下编译通过
+- [x] 6.2 实现 WASM 环境的语言检测(浏览器语言 API)
+- [x] 6.3 添加 URL 参数解析支持 `?lang=zh-CN`
+- [x] 6.4 在 `index.html` 中添加语言切换说明或 UI
 
 ## 7. 测试与验证
 
