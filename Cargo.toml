@@ -34,6 +34,7 @@ getrandom = { version = "0.3", features = ["wasm_js"] }
 rand = "0.9"
 rand_distr = "0.5"
 regex = "1.12"
+rust-i18n = "3"
 sha2 = "0.10.9"
 yansi = "1"
 
