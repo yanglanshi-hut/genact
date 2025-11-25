@@ -2,6 +2,7 @@
 use async_trait::async_trait;
 use rand::seq::IndexedRandom;
 use rand::{Rng, rng};
+use rust_i18n::t;
 
 use crate::args::AppConfig;
 use crate::data::{DOCKER_PACKAGES_LIST, DOCKER_TAGS_LIST};
@@ -33,10 +34,11 @@ impl Module for DockerImageRm {
             let sleep_length = rng.random_range(500..5000);
             let package_tag: &&str = DOCKER_TAGS_LIST.choose(&mut rng).unwrap();
 
-            print(format!("Untagged: {package_name}:{package_tag}",)).await;
+            print(format!("{}: {package_name}:{package_tag}", t!("modules.docker_image_rm.untagged"))).await;
             newline().await;
             print(format!(
-                "Untagged: {package_name}:{package_tag}@sha256:{hash}",
+                "{}: {package_name}:{package_tag}@sha256:{hash}",
+                t!("modules.docker_image_rm.untagged"),
                 hash = gen_hex_string(&mut rng, 64)
             ))
             .await;
@@ -46,7 +48,8 @@ impl Module for DockerImageRm {
             let mut index = 0;
             while index < num_hashes {
                 print(format!(
-                    "Deleted: sha256:{hash}",
+                    "{}: sha256:{hash}",
+                    t!("modules.docker_image_rm.deleted"),
                     hash = gen_hex_string(&mut rng, 64)
                 ))
                 .await;

@@ -4,6 +4,7 @@ use rand::rngs::ThreadRng;
 use rand::seq::IndexedRandom;
 use rand::{Rng, rng};
 use rand_distr::{ChiSquared, Distribution};
+use rust_i18n::t;
 use yansi::Paint;
 
 use crate::args::AppConfig;
@@ -47,42 +48,41 @@ impl Module for Composer {
 
         print(format!(
             "{text}",
-            text = Paint::green("Loading composer repositories with package information")
+            text = Paint::green(t!("modules.composer.loading_repos"))
         ))
         .await;
         newline().await;
         print(format!(
             "{text}",
-            text = Paint::green("Updating dependencies (including require-dev)")
+            text = Paint::green(t!("modules.composer.updating_deps"))
         ))
         .await;
         newline().await;
 
-        for stage in &["Installing"] {
-            for &(package_name, ref package_version) in &chosen_packages {
-                let sleep_length = rng.random_range(100..2000);
+        let stage = t!("modules.status.installing");
+        for &(package_name, ref package_version) in &chosen_packages {
+            let sleep_length = rng.random_range(100..2000);
 
-                print(format!(
-                    "  - {stage} {package_name} ({package_version}): Loading from cache",
-                    stage = stage,
-                    package_name = Paint::green(package_name),
-                    package_version = Paint::yellow(package_version)
-                ))
-                .await;
-                newline().await;
+            print(format!(
+                "  - {stage} {package_name} ({package_version}): {loading_cache}",
+                loading_cache = t!("modules.composer.loading_cache"),
+                package_name = Paint::green(package_name),
+                package_version = Paint::yellow(package_version)
+            ))
+            .await;
+            newline().await;
 
-                csleep(sleep_length).await;
+            csleep(sleep_length).await;
 
-                if appconfig.should_exit() {
-                    return;
-                }
+            if appconfig.should_exit() {
+                return;
             }
         }
-        print(format!("{text}", text = Paint::green("Writing lock file"))).await;
+        print(format!("{text}", text = Paint::green(t!("modules.composer.writing_lock")))).await;
         newline().await;
         print(format!(
             "{text}",
-            text = Paint::green("Generating autoload files")
+            text = Paint::green(t!("modules.composer.generating_autoload"))
         ))
         .await;
         newline().await;

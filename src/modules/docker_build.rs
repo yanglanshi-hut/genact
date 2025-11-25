@@ -4,6 +4,7 @@ use rand::Rng;
 use rand::rng;
 use rand::seq::IndexedRandom;
 use rand::seq::IteratorRandom;
+use rust_i18n::t;
 
 use crate::ALL_MODULES;
 use crate::args::AppConfig;
@@ -34,7 +35,8 @@ impl Module for DockerBuild {
 
         while current_size <= target_size {
             print(format!(
-                "\rSending build context to Docker daemon  {current_size:>4.2}MB",
+                "\r{}  {current_size:>4.2}MB",
+                t!("modules.docker_build.sending_context"),
             ))
             .await;
 
@@ -74,10 +76,11 @@ impl Module for DockerBuild {
             newline().await;
 
             if rand::random() {
-                print(" ---> Using cache").await;
+                print(format!(" ---> {}", t!("modules.docker_build.using_cache"))).await;
             } else {
                 print(format!(
-                    " ---> Running in {step_hash}",
+                    " ---> {} {step_hash}",
+                    t!("modules.docker_build.running_in"),
                     step_hash = gen_hex_string(&mut rng, 12),
                 ))
                 .await;
@@ -106,8 +109,8 @@ impl Module for DockerBuild {
         let image: &&str = DOCKER_PACKAGES_LIST.choose(&mut rng).unwrap();
         let image_tag: &&str = DOCKER_TAGS_LIST.choose(&mut rng).unwrap();
 
-        print(format!("Successfully built {hash}")).await;
-        print(format!("Successfully tagged {image}:{image_tag}",)).await;
+        print(format!("{} {hash}", t!("modules.docker_build.successfully_built"))).await;
+        print(format!("{} {image}:{image_tag}", t!("modules.docker_build.successfully_tagged"))).await;
 
         if appconfig.should_exit() {
             return;

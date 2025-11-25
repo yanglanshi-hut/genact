@@ -3,6 +3,7 @@ use async_trait::async_trait;
 use instant::Instant;
 use rand::seq::IndexedRandom;
 use rand::{Rng, rng};
+use rust_i18n::t;
 use yansi::Paint;
 
 use crate::args::AppConfig;
@@ -36,7 +37,11 @@ impl Module for Cargo {
             .collect();
 
         let now = Instant::now();
-        for stage in &["Downloading", "Compiling"] {
+        let stages = [
+            t!("modules.status.downloading"),
+            t!("modules.status.compiling"),
+        ];
+        for stage in &stages {
             for &(package_name, ref package_version) in &chosen_packages {
                 let sleep_length = rng.random_range(100..2000);
 
@@ -58,8 +63,10 @@ impl Module for Cargo {
         let seconds = elapsed.as_secs() as f32 + elapsed.subsec_nanos() as f32 / 1_000_000_000.0;
         dprint(
             format!(
-                "{stage:>12} release [optimized] target(s) in {seconds:.2} secs",
-                stage = Paint::green("Finished").bold(),
+                "{stage:>12} {target} {seconds:.2} {secs}",
+                stage = Paint::green(t!("modules.status.finished")).bold(),
+                target = t!("modules.cargo.release_target"),
+                secs = t!("modules.cargo.secs"),
             ),
             0,
         )
