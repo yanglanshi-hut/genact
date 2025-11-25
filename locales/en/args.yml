@@ -1,0 +1,11 @@
+en:
+  args:
+    list_modules: "List available modules"
+    modules: "Run only these modules"
+    speed_factor: "Global speed factor"
+    instant_print_lines: "Instantly print this many lines"
+    exit_after_time: "Exit after running for this long (format example: 2h10min)"
+    exit_after_modules: "Exit after running this many modules"
+    print_completions: "Generate completion file for a shell"
+    print_manpage: "Generate man page"
+    lang: "Set the UI language (e.g., zh-CN, en)"

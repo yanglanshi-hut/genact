@@ -1,0 +1,4 @@
+zh-CN:
+  cli:
+    about: "一个无意义活动生成器"
+    version: "显示版本信息"

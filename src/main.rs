@@ -17,6 +17,10 @@ async fn main() -> Result<()> {
 
     let appconfig = parse_args();
 
+    // 初始化国际化支持
+    let detected_lang = genact::i18n::detect_language(appconfig.lang.as_deref());
+    rust_i18n::set_locale(&detected_lang);
+
     if let Some(shell) = appconfig.print_completions {
         let mut clap_app = AppConfig::command();
         let app_name = clap_app.get_name().to_string();
@@ -35,7 +39,7 @@ async fn main() -> Result<()> {
     INSTANT_PRINT_LINES.store(appconfig.instant_print_lines, Ordering::SeqCst);
 
     if appconfig.list_modules_and_exit {
-        println!("Available modules:");
+        println!("{}", rust_i18n::t!("messages.available_modules"));
         for module in genact::modules::ALL_MODULES.keys() {
             println!("  {module}");
         }
@@ -57,6 +61,11 @@ async fn main() {
     panic::set_hook(Box::new(console_error_panic_hook::hook));
 
     let appconfig = parse_args();
+    
+    // 初始化国际化支持
+    let detected_lang = genact::i18n::detect_language(appconfig.lang.as_deref());
+    rust_i18n::set_locale(&detected_lang);
+    
     *SPEED_FACTOR.lock().await = appconfig.speed_factor;
     INSTANT_PRINT_LINES.store(appconfig.instant_print_lines, Ordering::SeqCst);
 

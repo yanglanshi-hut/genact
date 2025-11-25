@@ -1,0 +1,163 @@
+zh-CN:
+  modules:
+    ansible: "Ansible 剧本执行"
+    bootlog: "系统启动日志"
+    botnet: "僵尸网络活动模拟"
+    bruteforce: "SSH 暴力破解攻击"
+    cargo: "Rust Cargo 包编译"
+    cc: "C 编译器输出"
+    composer: "PHP Composer 包安装"
+    cryptomining: "加密货币挖矿"
+    docker_build: "Docker 镜像构建"
+    docker_image_rm: "Docker 镜像删除"
+    download: "文件下载模拟"
+    julia: "Julia 包安装"
+    kernel_compile: "Linux 内核编译"
+    memdump: "内存转储分析"
+    mkinitcpio: "初始化内存盘生成"
+    rkhunter: "Rootkit Hunter 安全扫描"
+    simcity: "模拟城市加载界面"
+    terraform: "Terraform 基础设施部署"
+    weblog: "Web 服务器访问日志"
+    
+    # 通用状态消息
+    status:
+      downloading: "正在下载"
+      compiling: "正在编译"
+      finished: "完成"
+      installing: "正在安装"
+      installed: "已安装"
+      building: "正在构建"
+      removing: "正在移除"
+      creating: "正在创建"
+      updating: "正在更新"
+      resolving: "正在解析"
+      precompiling: "正在预编译"
+      progress: "进度"
+      
+    # Cargo 模块
+    cargo:
+      release_target: "release [optimized] target(s) 用时"
+      secs: "秒"
+      
+    # Composer 模块
+    composer:
+      loading_repos: "正在加载 composer 仓库的包信息"
+      updating_deps: "正在更新依赖项（包括 require-dev）"
+      loading_cache: "正在从缓存加载"
+      writing_lock: "正在写入锁文件"
+      generating_autoload: "正在生成自动加载文件"
+      
+    # Docker build 模块
+    docker_build:
+      sending_context: "正在发送构建上下文到 Docker 守护进程"
+      using_cache: "使用缓存"
+      running_in: "运行于"
+      successfully_built: "成功构建"
+      successfully_tagged: "成功标记"
+      
+    # Docker image rm 模块
+    docker_image_rm:
+      untagged: "已取消标记"
+      deleted: "已删除"
+      
+    # Ansible 模块
+    ansible:
+      ok: "正常"
+      skipping: "跳过"
+      failed: "失败"
+      changed: "已变更"
+      play: "剧本"
+      task: "任务"
+      gathering_facts: "收集信息"
+      
+    # Botnet 模块
+    botnet:
+      establishing_connections: "正在建立连接"
+      cluster: "集群"
+      nodes: "节点"
+      online: "在线"
+      booting: "启动中"
+      sync_clocks: "正在同步时钟..."
+      sending_login: "正在发送登录信息..."
+      sending_command: "正在发送命令..."
+      done: "[完成]"
+      update_complete: ">> 僵尸网络更新完成。"
+      
+    # Bruteforce 模块
+    bruteforce:
+      hashes_to_decrypt: "=> 待解密哈希值"
+      extracting_rainbow: "=> 正在提取彩虹表"
+      begin_matching: "=> 开始匹配"
+      match_found: "=> 找到匹配"
+      
+    # Julia 模块
+    julia:
+      updating_registry: "注册表位于"
+      resolving_versions: "包版本..."
+      downloading_artifact: "构件："
+      downloaded: "已下载"
+      updating_project: "正在更新"
+      no_changes: "无变更"
+      active: "活跃"
+      deleted: "已删除"
+      manifest_files: "清单文件："
+      artifact_files: "构件文件："
+      scratchspaces: "临时空间："
+      package_installations: "包安装"
+      artifact_installations: "构件安装"
+      dependencies_precompiled: "依赖项预编译成功，用时"
+      already_precompiled: "已预编译"
+      found: "找到"
+      
+    # Mkinitcpio 模块
+    mkinitcpio:
+      warning: "==> 警告："
+      building_image: "正在从预设构建镜像"
+      starting_build: "开始构建："
+      running_hook: "正在运行构建钩子："
+      generating_deps: "正在生成模块依赖项"
+      creating_image: "正在创建"
+      compressed_image: "压缩的 initcpio 镜像："
+      image_success: "镜像生成成功"
+      possibly_missing: "模块可能缺少固件："
+      
+    # Kernel compile 模块
+    kernel_compile:
+      build: "构建"
+      setup_is: "安装程序大小为"
+      bytes: "字节"
+      padded_to: "填充至"
+      system_is: "系统大小为"
+      crc: "校验和"
+      kernel_ready: "内核："
+      is_ready: "已就绪"
+      
+    # Terraform 模块
+    terraform:
+      acquiring_lock: "正在获取状态锁。这可能需要一些时间..."
+      refreshing_state: "正在刷新状态..."
+      creating: "正在创建..."
+      creation_complete: "创建完成，用时"
+      still_creating: "仍在创建..."
+      modifying: "正在修改..."
+      still_modifying: "仍在修改..."
+      modifications_complete: "修改完成，用时"
+      destroying: "正在销毁..."
+      destruction_complete: "销毁完成，用时"
+      apply_complete: "应用完成！资源："
+      added: "已添加"
+      changed: "已变更"
+      destroyed: "已销毁"
+      elapsed: "已用时"
+      
+    # Cryptomining 模块
+    cryptomining:
+      received_job: "收到新任务"
+      seed: "种子："
+      target: "目标："
+      solution_found: "找到解决方案；已提交至"
+      nonce: "随机数："
+      accepted: "已接受。"
+      speed: "速度"
+      time: "时间："

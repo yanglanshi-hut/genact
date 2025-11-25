@@ -1,0 +1,163 @@
+en:
+  modules:
+    ansible: "Ansible playbook execution"
+    bootlog: "System boot log"
+    botnet: "Botnet activity simulation"
+    bruteforce: "SSH brute-force attack"
+    cargo: "Rust Cargo package compilation"
+    cc: "C compiler output"
+    composer: "PHP Composer package installation"
+    cryptomining: "Cryptocurrency mining"
+    docker_build: "Docker image build"
+    docker_image_rm: "Docker image removal"
+    download: "File download simulation"
+    julia: "Julia package installation"
+    kernel_compile: "Linux kernel compilation"
+    memdump: "Memory dump analysis"
+    mkinitcpio: "Initial ramdisk generation"
+    rkhunter: "Rootkit Hunter security scan"
+    simcity: "SimCity loading screen"
+    terraform: "Terraform infrastructure deployment"
+    weblog: "Web server access log"
+    
+    # Common status messages
+    status:
+      downloading: "Downloading"
+      compiling: "Compiling"
+      finished: "Finished"
+      installing: "Installing"
+      installed: "Installed"
+      building: "Building"
+      removing: "Removing"
+      creating: "Creating"
+      updating: "Updating"
+      resolving: "Resolving"
+      precompiling: "Precompiling"
+      progress: "Progress"
+      
+    # Cargo module
+    cargo:
+      release_target: "release [optimized] target(s) in"
+      secs: "secs"
+      
+    # Composer module
+    composer:
+      loading_repos: "Loading composer repositories with package information"
+      updating_deps: "Updating dependencies (including require-dev)"
+      loading_cache: "Loading from cache"
+      writing_lock: "Writing lock file"
+      generating_autoload: "Generating autoload files"
+      
+    # Docker build module
+    docker_build:
+      sending_context: "Sending build context to Docker daemon"
+      using_cache: "Using cache"
+      running_in: "Running in"
+      successfully_built: "Successfully built"
+      successfully_tagged: "Successfully tagged"
+      
+    # Docker image rm module
+    docker_image_rm:
+      untagged: "Untagged"
+      deleted: "Deleted"
+      
+    # Ansible module
+    ansible:
+      ok: "ok"
+      skipping: "skipping"
+      failed: "failed"
+      changed: "changed"
+      play: "PLAY"
+      task: "TASK"
+      gathering_facts: "Gathering Facts"
+      
+    # Botnet module
+    botnet:
+      establishing_connections: "Establishing connections"
+      cluster: "Cluster"
+      nodes: "nodes"
+      online: "online"
+      booting: "booting"
+      sync_clocks: "Synchronizing clocks..."
+      sending_login: "Sending login information..."
+      sending_command: "Sending command..."
+      done: "[done]"
+      update_complete: ">> Botnet update complete."
+      
+    # Bruteforce module
+    bruteforce:
+      hashes_to_decrypt: "=> Hashes to decrypt"
+      extracting_rainbow: "=> Extracting Rainbow Table"
+      begin_matching: "=> Begin matching"
+      match_found: "=> Match found"
+      
+    # Julia module
+    julia:
+      updating_registry: "registry at"
+      resolving_versions: "package versions..."
+      downloading_artifact: "artifact:"
+      downloaded: "Downloaded"
+      updating_project: "Updating"
+      no_changes: "No Changes"
+      active: "Active"
+      deleted: "Deleted"
+      manifest_files: "manifest files:"
+      artifact_files: "artifact files:"
+      scratchspaces: "scratchspaces:"
+      package_installations: "package installations"
+      artifact_installations: "artifact installations"
+      dependencies_precompiled: "dependencies successfully precompiled in"
+      already_precompiled: "already precompiled"
+      found: "found"
+      
+    # Mkinitcpio module
+    mkinitcpio:
+      warning: "==> WARNING:"
+      building_image: "Building image from preset"
+      starting_build: "Starting build:"
+      running_hook: "Running build hook:"
+      generating_deps: "Generating module dependencies"
+      creating_image: "Creating"
+      compressed_image: "compressed initcpio image:"
+      image_success: "Image generation successful"
+      possibly_missing: "Possibly missing firmware for module:"
+      
+    # Kernel compile module
+    kernel_compile:
+      build: "BUILD"
+      setup_is: "Setup is"
+      bytes: "bytes"
+      padded_to: "padded to"
+      system_is: "System is"
+      crc: "CRC"
+      kernel_ready: "Kernel:"
+      is_ready: "is ready"
+      
+    # Terraform module
+    terraform:
+      acquiring_lock: "Acquiring state lock. This may take a few moments..."
+      refreshing_state: "Refreshing state..."
+      creating: "Creating..."
+      creation_complete: "Creation complete after"
+      still_creating: "Still creating..."
+      modifying: "Modifying..."
+      still_modifying: "Still modifying..."
+      modifications_complete: "Modifications complete after"
+      destroying: "Destroying..."
+      destruction_complete: "Destruction complete after"
+      apply_complete: "Apply complete! Resources:"
+      added: "added"
+      changed: "changed"
+      destroyed: "destroyed"
+      elapsed: "elapsed"
+      
+    # Cryptomining module
+    cryptomining:
+      received_job: "Received new job"
+      seed: "seed:"
+      target: "target:"
+      solution_found: "Solution found; Submitted to"
+      nonce: "Nonce:"
+      accepted: "Accepted."
+      speed: "Speed"
+      time: "Time:"

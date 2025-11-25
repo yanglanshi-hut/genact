@@ -1,0 +1,4 @@
+en:
+  cli:
+    about: "A nonsense activity generator"
+    version: "Display version information"

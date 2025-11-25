@@ -1,9 +1,11 @@
 pub mod args;
 mod data;
 mod generators;
+pub mod i18n;
 mod io;
 pub mod modules;
 
+use rust_i18n::t;
 use std::sync::atomic::{AtomicBool, AtomicU32};
 
 use async_std::sync::Mutex;
@@ -47,6 +49,6 @@ pub async fn run(appconfig: AppConfig) {
 
 #[cfg(not(target_arch = "wasm32"))]
 pub fn exit_handler() {
-    println!("Saving work to disk...");
+    println!("{}", t!("messages.saving_work"));
     std::process::exit(0);
 }

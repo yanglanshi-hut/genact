@@ -1,0 +1,4 @@
+en:
+  errors:
+    speed_factor_too_small: "Speed factor must be larger than 0.01"
+    must_be_larger_than_zero: "Must be larger than 0"

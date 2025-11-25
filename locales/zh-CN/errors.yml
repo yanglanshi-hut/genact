@@ -1,0 +1,4 @@
+zh-CN:
+  errors:
+    speed_factor_too_small: "速度因子必须大于 0.01"
+    must_be_larger_than_zero: "必须大于 0"

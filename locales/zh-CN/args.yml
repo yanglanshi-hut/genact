@@ -1,0 +1,11 @@
+zh-CN:
+  args:
+    list_modules: "列出可用的模块"
+    modules: "仅运行这些模块"
+    speed_factor: "全局速度因子"
+    instant_print_lines: "立即打印指定行数"
+    exit_after_time: "运行指定时长后退出(格式示例: 2h10min)"
+    exit_after_modules: "运行指定数量的模块后退出"
+    print_completions: "为指定 shell 生成补全文件"
+    print_manpage: "生成 man 手册页"
+    lang: "设置界面语言(例如: zh-CN, en)"
