@@ -90,8 +90,38 @@ or (on Docker)
           --exit-after-modules <EXIT_AFTER_MODULES>    Exit after running this many modules
           --print-completions <shell>                  Generate completion file for a shell [possible values: bash, elvish, fish, powershell, zsh]
           --print-manpage                              Generate man page
+      -L, --lang <LANG>                                Set the UI language (e.g., zh-CN, en)
       -h, --help                                       Print help
       -V, --version                                    Print version
+
+### Language Selection
+
+`genact` supports multiple languages. You can set the language in several ways (in order of priority):
+
+1. **Command-line argument**: Use the `--lang` or `-L` option
+   ```bash
+   genact --lang zh-CN
+   ```
+
+2. **Environment variable**: Set the `GENACT_LANG` environment variable
+   ```bash
+   export GENACT_LANG=zh-CN
+   genact
+   ```
+   
+   On Windows:
+   ```cmd
+   set GENACT_LANG=zh-CN
+   genact
+   ```
+
+3. **System locale**: If neither of the above is set, `genact` will try to detect your system language from the `LANG` environment variable
+
+4. **Default**: If no language is detected, English (`en`) will be used
+
+Currently supported languages:
+- `en` - English
+- `zh-CN` - Simplified Chinese (简体中文)
 
 ### Web usage
 
