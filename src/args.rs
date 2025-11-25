@@ -1,5 +1,6 @@
 #[cfg(not(target_arch = "wasm32"))]
 use clap::{Parser, builder::PossibleValuesParser};
+use rust_i18n::t;
 
 use crate::modules::ALL_MODULES;
 
@@ -7,7 +8,7 @@ use crate::modules::ALL_MODULES;
 fn parse_speed_factor(s: &str) -> Result<f32, String> {
     let value_as_float = s.parse::<f32>().map_err(|e| e.to_string())?;
     if value_as_float < 0.01 {
-        return Err("Speed factor must be larger than 0.01".to_string());
+        return Err(t!("errors.speed_factor_too_small").to_string());
     }
     Ok(value_as_float)
 }
@@ -16,7 +17,7 @@ fn parse_speed_factor(s: &str) -> Result<f32, String> {
 fn parse_min_1(s: &str) -> Result<u32, String> {
     let value_as_u32 = s.parse::<u32>().map_err(|e| e.to_string())?;
     if value_as_u32 == 0 {
-        return Err("Must be larger than 0".to_string());
+        return Err(t!("errors.must_be_larger_than_zero").to_string());
     }
     Ok(value_as_u32)
 }
@@ -56,6 +57,10 @@ pub struct AppConfig {
     /// Generate man page
     #[clap(long = "print-manpage")]
     pub print_manpage: bool,
+
+    /// Set the UI language (e.g., zh-CN, en)
+    #[clap(short = 'L', long)]
+    pub lang: Option<String>,
 }
 
 #[cfg(target_arch = "wasm32")]
@@ -68,6 +73,9 @@ pub struct AppConfig {
 
     /// Instantly print this many lines
     pub instant_print_lines: u32,
+
+    /// UI language setting
+    pub lang: Option<String>,
 }
 
 impl AppConfig {
@@ -124,15 +132,26 @@ pub fn parse_args() -> AppConfig {
             temp_modules.push(actual_val.to_string());
         }
     }
+    
+    // 重新获取 query_pairs,因为之前的 iterator 已经被消费
+    let mut pairs = parsed_url.query_pairs();
+    
     let speed_factor: f32 = pairs
         .find(|&(ref k, _)| k == "speed-factor")
         .map(|(_, v)| v.parse::<f32>().unwrap_or(1.0))
         .unwrap_or(1.0);
 
+    let mut pairs = parsed_url.query_pairs();
     let instant_print_lines: u32 = pairs
         .find(|&(ref k, _)| k == "instant-print-lines")
         .map(|(_, v)| v.parse::<u32>().unwrap_or(0))
         .unwrap_or(0);
+
+    // 解析语言参数 ?lang=zh-CN
+    let mut pairs = parsed_url.query_pairs();
+    let lang: Option<String> = pairs
+        .find(|&(ref k, _)| k == "lang")
+        .map(|(_, v)| v.to_string());
 
     let modules_to_run = if temp_modules.is_empty() {
         ALL_MODULES.keys().map(|m| m.to_string()).collect()
@@ -144,5 +163,6 @@ pub fn parse_args() -> AppConfig {
         modules: modules_to_run,
         speed_factor,
         instant_print_lines,
+        lang,
     }
 }
